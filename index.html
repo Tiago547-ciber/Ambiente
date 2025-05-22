@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+  <style>
+    .opcoes {
+      margin: 1400px 20px 20px 20px;
+
+    }
+    select {
+      width: 100%;
+      height: 115px;    
+      font-weight: bold;
+      font-size: 30px;  
+      text-align: center;      
+    }
+    #opPort{
+      border-radius: 10px 10px 0 0;
+    }
+    #opPux{
+      border-radius: 0 0 10px 10px;
+    } 
+    #opAmb{
+      border-radius: 0 0 0 0;
+    } 
+    #opFec{
+      border-radius: 0 0 0 0;
+    }   
+    .container {
+      margin: 10px 10px 10px 10px;
+      width: auto;
+      
+    }
+    body{
+      background-size: 100% 79%;
+      background-repeat: no-repeat;
+      background-image: url("assets/amb3.png");
+    }
+    #porta{
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+      position: absolute;
+      z-index: 1;
+      width: 100%;
+      height: 60%;
+      margin: -1050px 0 0 0px;
+    }  
+  
+    #fechadura{
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+      position: absolute;
+      z-index: 1;
+      width: 7%;
+      height: 8%;
+      margin: -480px 0 0 350px;
+    }    
+  
+    #puxador{
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+      position: absolute;
+      z-index: 2;
+      width: 8%;
+      height: 8%;
+
+    }      
+  </style>
+  <title>MODELAR</title>
+</head>
+<body id="body">
+  <div class="conteiner">
+    <div id="porta"></div>
+    <div id="fechadura"></div>
+    <div id="puxador"></div>    
+    <div class="ambiente" id="amb"></div>
+    <div class="porta" id="port"></div>
+    <div class="fechadura" id="fec"></div>
+    <div class="puxador" id="pux"></div>
+    <div class="opcoes">
+      <select id="opPort">
+          <option name="op" selected value="default"></option>
+          <option name="op" value="por1">kit de porta Lisa Branco 2,10 x 0,80 Artens</option>
+          <option name="op" value="por2">kit de porta Lisa Curupixá 2,10 x 0,80 Artens</option>
+      </select><br>
+    
+      <select id="opFec">
+          <option selected value="default"></option>
+          <option name="fec" value="fec1">Fechadura Eletrônica Digital Elsys  ESF-DE4000B Embutir</option>
+          <option name="fec" value="fec2">Fechadura Eletrônica Digital Elsys  ESF-DE4000B</option>
+          <option name="fec" value="fec3">Fechadura Digital Intelbras Senha e Biometria MFV3000</option>
+          <option name="fec" value="fec4">Fechadura Digital Intelbras Senha FV101 Preto Sobrepor</option>
+          <option name="fec" value="fec5">Fechadura Digital Elsys Senha e TAG Tecno Prata Sobrepor</option>
+      </select><br>   
+    
+      <select id="opPux">
+          <option selected value="default"></option>
+          <option name="pux" value="pux1">Puxador Aço Inox Prata Escovado Tubular Reto 40cm</option>
+          <option name="pux"  value="pux2">Puxador Alumínio Preto Barra Reta 40cm Geris Eco</option>
+          <option name="pux"  value="pux3">Puxador Aço Inox Prata Escovado Tubular Reto 40cm</option>
+          <option name="pux" value="pux4">Puxador Aço Inox Prata Polido Tubular Reto 40cm</option>
+          <option name="pux"  value="pux5">Puxador Alumínio Preto Barra Reta 75cm Geris Eco</option>      
+      </select>      
+    </div>
+  </div>
+</body>
+<script>
+      
+      const body = document.getElementById("body");
+      const frame1 = document.createElement('p');
+      const select1 = document.getElementById('opAmb');
+      const select2 = document.getElementById('opPort');
+      const select3 = document.getElementById('opFec');
+      const select4 = document.getElementById('opPux');
+      const port = document.getElementById('porta');
+      const fech = document.getElementById('fechadura');
+      const puxa = document.getElementById('puxador');
+      
+
+      setInterval(() => {
+        if (select2.value == "por1") {
+          port.style.backgroundImage= 'url("assets/portabranca.png")';
+         
+        }
+        else if (select2.value == "por2") {
+          port.style.backgroundImage= 'url("assets/portacurupixa.png")';
+        }else{
+          '';
+        }
+      }, 100);
+
+      setInterval(() => {
+        if (select3.value == "fec1") {
+          fech.style.backgroundImage= 'url("assets/ESF-DE4000B.png")';
+          fech.style.width= '8%';
+          fech.style.height= '8%';   
+          puxa.style.backgroundImage = '';     
+        }
+        else if (select3.value == "fec2") {
+          fech.style.backgroundImage= 'url("assets/fechadura_biometria_esf_de4000b.png")';
+          fech.style.width= '8%';
+          fech.style.height= '8%'; 
+          puxa.style.backgroundImage = '';         
+        }
+        else if (select3.value == "fec3") {
+          fech.style.backgroundImage= 'url("assets/MFV300.webp")';
+          fech.style.width= '8%';
+          fech.style.height= '8%';   
+          puxa.style.backgroundImage = '';          
+        }
+        else if (select3.value == "fec4") {
+          fech.style.backgroundImage= 'url("assets/FV101.png")';
+          fech.style.width= '5%';
+          fech.style.height= '4%';
+                 
+        }
+        else if (select3.value == "fec5") {
+          fech.style.backgroundImage= 'url("assets/fechadura_senha_e_tag_tecno_prata.png")';
+          fech.style.width= '5%';
+          fech.style.height= '4%';  
+          
+        }else{
+          '';
+        }
+      }, 100);
+
+      setInterval(() => {
+        if (select4.value == "pux1" && select3.value == "fec4" || select4.value == "pux1" && select3.value == "fec5") {
+          puxa.style.backgroundImage= 'url("assets/puxador_30cm_aco_escovado.png")';
+          puxa.style.width= '1%';
+          puxa.style.height= '10%';  
+          puxa.style.margin= '-540px 0 0 400px';          
+        }
+        else if (select4.value == "pux2" && select3.value == "fec4" || select4.value == "pux2" && select3.value == "fec5") {
+          puxa.style.backgroundImage= 'url("assets/puxador_40cm_aluminio_preto.png")';
+          puxa.style.width= '4%';
+          puxa.style.height= '10%';   
+          puxa.style.margin= '-540px 0 0 400px';           
+        }
+        else if (select4.value == "pux3" && select3.value == "fec4" || select4.value == "pux3" && select3.value == "fec5") {
+          puxa.style.backgroundImage= 'url("assets/puxador_40cm_inox_escovado.png")';
+          puxa.style.width= '4%';
+          puxa.style.height= '10%'; 
+          puxa.style.margin= '-540px 0 0 380px';           
+        }
+        else if (select4.value == "pux4" && select3.value == "fec4" || select4.value == "pux4" && select3.value == "fec5") {
+          puxa.style.backgroundImage= 'url("assets/puxador_40cm_inox_polido.png")';
+          puxa.style.width= '1%';
+          puxa.style.height= '10%';
+          puxa.style.margin= '-530px 0 0 400px';          
+        }
+        else if (select4.value == "pux5" && select3.value == "fec4" || select4.value == "pux5" && select3.value == "fec5") {
+          puxa.style.backgroundImage= 'url("assets/puxador_75cm_aluminio_preto.png")';
+          puxa.style.width= '8%';
+          puxa.style.height= '15%';  
+          puxa.style.margin= '-570px 0 0 370px';           
+        }else{
+          '';
+        }
+      }, 100);
+</script>
+</html>
