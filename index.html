@@ -5,11 +5,11 @@
   <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
   <style>
     .opcoes {
-      margin: 1450px 20px 20px 30px;
-
+      margin: 450px 20px 20px 30px;
+      z-index: 1;
     }
     select {
-      width: 100%;
+      width: 122%;
       height: 115px; 
       margin-top: 10px;      
       font-weight: bold;
@@ -34,7 +34,7 @@
       
     }
     body{
-      background-size: 100% 79%;
+      background-size: 120% 79%;
       background-repeat: no-repeat;
       background-image: url("assets/amb3.png");
     }
@@ -45,7 +45,7 @@
       z-index: 1;
       width: 100%;
       height: 60%;
-      margin: -1035px 0 0 0px;
+      margin: -655px 0 0 200px;
     }  
   
     #fechadura{
@@ -55,7 +55,7 @@
       z-index: 1;
       width: 7%;
       height: 8%;
-      margin: -480px 0 0 350px;
+      margin: -150px 0 0 550px;
     }    
   
     #puxador{
@@ -66,12 +66,80 @@
       width: 8%;
       height: 8%;
 
-    }      
+    }    
+  
+    .precos {
+      width: 40%;
+      height: 1000px;
+      border: solid 3px black;
+      margin: 200px 20px 20px 20px;
+      border-radius: 40px;
+      animation: move 2s  infinite alternate;      
+      font-family: Arial;
+      font-size: 40px;
+      z-index: 15;
+      background-color: white;
+      
+    } 
+    #preco1 {
+      font-weight: bold;
+      font-size: 80px;
+      text-align: center;
+    }
+    #preco2 {
+      font-weight: bold;
+      font-size: 80px;
+      text-align: center;      
+    }
+    #preco3 {
+      font-weight: bold;
+      font-size: 80px;
+      text-align: center;      
+    }
+    #total {
+      font-weight: bold;
+      font-size: 90px;
+      text-align: center; 
+      
+    }        
+    
+    h1 {
+      font-size: 40px;
+      margin-bottom: 100px;
+      text-align: center; 
+      font-family: 'Apple Chancery', cursive;    
+    }
+    label {
+      font-weight: bold;
+      font-size: 50px;
+      text-align: justify;
+      margin-left: 5%; 
+      font-family: 'Apple Chancery', cursive;      
+    }     
+    @keyframes move {
+      from {
+              box-shadow: 1px 1px 1px 1px gray;
+        }
+      to {
+              box-shadow: 5px 5px 5px 5px gray;
+      }
+    }
   </style>
   <title>MODELAR</title>
 </head>
 <body id="body">
   <div class="conteiner">
+    <div class="precos">
+      <h1>Sua Porta dos Sonhos...</h1>
+      <label>Porta: </label>
+      <div id="preco1">0,00</div><br>
+      <label>Fechadura: </label>
+      <div id="preco2">0,00</div><br>
+      <label>Puxador: </label>
+      <div id="preco3">0,00</div><br>
+      <label>...por Apenas: </label> 
+      <div id="total">0,00</div>
+    </div>
     <div id="porta"></div>
     <div id="fechadura"></div>
     <div id="puxador"></div>    
@@ -107,24 +175,105 @@
   </div>
 </body>
 <script>
+      const dados = {
+        kitPorta1: 928.90,
+        kitPorta2: 1005.90,
+        fechadura1: 899.90,
+        fechadura2: 999.90,
+        fechadura3: 1299.90,
+        fechadura4: 549.90,
+        fechadura5: 699.90,
+        puxador1: 134.90,
+        puxador2: 99.90,
+        puxador3: 190.90,
+        puxador4: 238.90,
+        puxador5: 358.99        
+      }
+      let valorP = 0;
+      let valorF = 0;
+      let valorPu = 0;
       
+
       const body = document.getElementById("body");
-      const frame1 = document.createElement('p');
-      const select1 = document.getElementById('opAmb');
+
+      
       const select2 = document.getElementById('opPort');
       const select3 = document.getElementById('opFec');
       const select4 = document.getElementById('opPux');
       const port = document.getElementById('porta');
       const fech = document.getElementById('fechadura');
       const puxa = document.getElementById('puxador');
+      const preco1 = document.getElementById('preco1');
+      const preco2 = document.getElementById('preco2');
+      const preco3 = document.getElementById('preco3');
+      const total = document.getElementById('total');
       
+      setInterval(() => {
+        let valorTotal = valorP + valorF + valorPu;
+        if (select2.value == "por1") {
+          valorP = parseFloat(dados.kitPorta1);
+          total.innerText = parseFloat(valorTotal);
+        }
+        if (select2.value == "por2") {
+          valorP = parseFloat(dados.kitPorta2);
+          total.innerText = parseFloat(valorTotal);
+        }
+        if (select3.value == "fec1") {
+          valorF = parseFloat(dados.fechadura1);
+          total.innerText = parseFloat(valorTotal);
+        }
+        if (select3.value == "fec2") {
+          valorF = parseFloat(dados.fechadura2);
+          total.innerText = parseFloat(valorTotal);
+        }
+        if (select3.value == "fec3") {
+          valorF = parseFloat(dados.fechadura3);
+          total.innerText = parseFloat(valorTotal);
+        }
+        if (select3.value == "fec4") {
+          valorF = parseFloat(dados.fechadura4);
+          total.innerText = parseFloat(valorTotal);
+        }
+        if (select3.value == "fec5") {
+          valorF = parseFloat(dados.fechadura5);
+          total.innerText = parseFloat(valorTotal);
+        }else{
+          '';
+        }
+        if (select4.value == "pux1" && select3.value == "fec4" || select4.value == "pux1" && select3.value == "fec5") {
+          valorPu = parseFloat(dados.puxador1);
+          total.innerText = parseFloat(valorTotal);
+        }
+        if (select4.value == "pux2" && select3.value == "fec4" || select4.value == "pux1" && select3.value == "fec5") {
+          valorPu = parseFloat(dados.puxador2);
+          total.innerText = parseFloat(valorTotal);
+        }
+        if (select4.value == "pux3" && select3.value == "fec4" || select4.value == "pux1" && select3.value == "fec5") {
+          valorPu = parseFloat(dados.puxador3);
+          total.innerText = parseFloat(valorTotal);
+        }
+        if (select4.value == "pux4" && select3.value == "fec4" || select4.value == "pux1" && select3.value == "fec5") {
+          valorPu = dados.puxador4;
+          total.innerText = valorTotal;
+        }
+        if (select4.value == "pux5" && select3.value == "fec4" || select4.value == "pux1" && select3.value == "fec5") {
+          valorPu = dados.puxador5;
+          total.innerText = valorTotal;
+        }else {
+          '';      
+        }          
+      }, 100);
 
       setInterval(() => {
         if (select2.value == "por1") {
+          preco1.innerText = valorP;
+          preco1.style.color = "red";
           port.style.backgroundImage= 'url("assets/portabranca.png")';
          
         }
         else if (select2.value == "por2") {
+          preco1.innerText = dados.kitPorta2;
+          preco1.style.color = "red";          
           port.style.backgroundImage= 'url("assets/portacurupixa.png")';
         }else{
           '';
@@ -136,31 +285,44 @@
           fech.style.backgroundImage= 'url("assets/ESF-DE4000B.png")';
           fech.style.width= '8%';
           fech.style.height= '8%';   
-          puxa.style.backgroundImage = '';     
+          preco2.innerText = dados.fechadura1;
+          preco2.style.color = "red";
+          puxa.style.backgroundImage = ''; 
+          preco3.innerText = '';        
         }
         else if (select3.value == "fec2") {
           fech.style.backgroundImage= 'url("assets/fechadura_biometria_esf_de4000b.png")';
           fech.style.width= '8%';
           fech.style.height= '8%'; 
-          puxa.style.backgroundImage = '';         
+          preco2.innerText = dados.fechadura2;
+          preco2.style.color = "red";         
+          puxa.style.backgroundImage = ''; 
+          preco3.innerText = '';           
         }
         else if (select3.value == "fec3") {
           fech.style.backgroundImage= 'url("assets/MFV300.webp")';
           fech.style.width= '8%';
           fech.style.height= '8%';   
-          puxa.style.backgroundImage = '';          
+          preco2.innerText = dados.fechadura3;
+          preco2.style.color = "red";         
+          puxa.style.backgroundImage = ''; 
+          preco3.innerText = '';          
         }
         else if (select3.value == "fec4") {
           fech.style.backgroundImage= 'url("assets/FV101.png")';
           fech.style.width= '5%';
           fech.style.height= '4%';
-                 
+          preco2.innerText = dados.fechadura4;
+          preco2.style.color = "red";          
+          puxa.style.backgroundImage = ''; 
         }
         else if (select3.value == "fec5") {
           fech.style.backgroundImage= 'url("assets/fechadura_senha_e_tag_tecno_prata.png")';
           fech.style.width= '5%';
           fech.style.height= '4%';  
-          
+          preco2.innerText = dados.fechadura5;
+          preco2.style.color = "red";          
+          puxa.style.backgroundImage = '';           
         }else{
           '';
         }
@@ -171,31 +333,41 @@
           puxa.style.backgroundImage= 'url("assets/puxador_30cm_aco_escovado.png")';
           puxa.style.width= '1%';
           puxa.style.height= '10%';  
-          puxa.style.margin= '-540px 0 0 400px';          
+          puxa.style.margin= '-200px 0 0 620px';
+          preco3.innerText = dados.puxador1;   
+          preco3.style.color = "red";         
         }
         else if (select4.value == "pux2" && select3.value == "fec4" || select4.value == "pux2" && select3.value == "fec5") {
           puxa.style.backgroundImage= 'url("assets/puxador_40cm_aluminio_preto.png")';
           puxa.style.width= '4%';
           puxa.style.height= '10%';   
-          puxa.style.margin= '-540px 0 0 400px';           
+          puxa.style.margin= '-200px 0 0 600px';  
+          preco3.innerText = dados.puxador2;  
+          preco3.style.color = "red";
         }
         else if (select4.value == "pux3" && select3.value == "fec4" || select4.value == "pux3" && select3.value == "fec5") {
           puxa.style.backgroundImage= 'url("assets/puxador_40cm_inox_escovado.png")';
           puxa.style.width= '4%';
           puxa.style.height= '10%'; 
-          puxa.style.margin= '-540px 0 0 380px';           
+          puxa.style.margin= '-200px 0 0 600px';  
+          preco3.innerText = dados.puxador3; 
+          preco3.style.color = "red";
         }
         else if (select4.value == "pux4" && select3.value == "fec4" || select4.value == "pux4" && select3.value == "fec5") {
           puxa.style.backgroundImage= 'url("assets/puxador_40cm_inox_polido.png")';
           puxa.style.width= '1%';
           puxa.style.height= '10%';
-          puxa.style.margin= '-530px 0 0 400px';          
+          puxa.style.margin= '-200px 0 0 600px';  
+          preco3.innerText = dados.puxador4;
+          preco3.style.color = "red";
         }
         else if (select4.value == "pux5" && select3.value == "fec4" || select4.value == "pux5" && select3.value == "fec5") {
           puxa.style.backgroundImage= 'url("assets/puxador_75cm_aluminio_preto.png")';
           puxa.style.width= '8%';
           puxa.style.height= '15%';  
-          puxa.style.margin= '-570px 0 0 370px';           
+          puxa.style.margin= '-250px 0 0 580px';  
+          preco3.innerText = dados.puxador5;
+          preco3.style.color = "red";
         }else{
           '';
         }
