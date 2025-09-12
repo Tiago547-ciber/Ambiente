@@ -302,55 +302,56 @@
       
       setInterval(() => {
         let valorTotal = valorP + valorF + valorPu;
+        let formatado = valorTotal.toFixed(2);
         if (select2.value == "por1") {
           valorP = parseFloat(dados.kitPorta1);
-          total.innerText = parseFloat(valorTotal);
+          total.innerText = parseFloat(formatado);
         }
         if (select2.value == "por2") {
           valorP = parseFloat(dados.kitPorta2);
-          total.innerText = parseFloat(valorTotal);
+          total.innerText = parseFloat(formatado);
         }
         if (select3.value == "fec1") {
           valorF = parseFloat(dados.fechadura1);
-          total.innerText = parseFloat(valorTotal);
+          total.innerText = parseFloat(formatado);
         }
         if (select3.value == "fec2") {
           valorF = parseFloat(dados.fechadura2);
-          total.innerText = parseFloat(valorTotal);
+          total.innerText = parseFloat(formatado);
         }
         if (select3.value == "fec3") {
           valorF = parseFloat(dados.fechadura3);
-          total.innerText = parseFloat(valorTotal);
+          total.innerText = parseFloat(formatado);
         }
         if (select3.value == "fec4") {
           valorF = parseFloat(dados.fechadura4);
-          total.innerText = parseFloat(valorTotal);
+          total.innerText = parseFloat(formatado);
         }
         if (select3.value == "fec5") {
           valorF = parseFloat(dados.fechadura5);
-          total.innerText = parseFloat(valorTotal);
+          total.innerText = parseFloat(formatado);
         }else{
           '';
         }
         if (select4.value == "pux1" && select3.value == "fec4" || select4.value == "pux1" && select3.value == "fec5") {
           valorPu = parseFloat(dados.puxador1);
-          total.innerText = parseFloat(valorTotal);
+          total.innerText = parseFloat(formatado);
         }
         if (select4.value == "pux2" && select3.value == "fec4" || select4.value == "pux1" && select3.value == "fec5") {
           valorPu = parseFloat(dados.puxador2);
-          total.innerText = parseFloat(valorTotal);
+          total.innerText = parseFloat(formatado);
         }
         if (select4.value == "pux3" && select3.value == "fec4" || select4.value == "pux1" && select3.value == "fec5") {
           valorPu = parseFloat(dados.puxador3);
-          total.innerText = parseFloat(valorTotal);
+          total.innerText = parseFloat(formatado);
         }
         if (select4.value == "pux4" && select3.value == "fec4" || select4.value == "pux1" && select3.value == "fec5") {
           valorPu = dados.puxador4;
-          total.innerText = valorTotal;
+          total.innerText = formatado;
         }
         if (select4.value == "pux5" && select3.value == "fec4" || select4.value == "pux1" && select3.value == "fec5") {
           valorPu = dados.puxador5;
-          total.innerText = valorTotal;
+          total.innerText = formatado;
         }else {
           '';      
         }          
