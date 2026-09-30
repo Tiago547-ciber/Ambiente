@@ -1,302 +1,469 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MODELAR</title>
+  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
   <style>
     * {
-      box-sizing: border-box;
       padding: 0;
-      margin: 0;
+      margin:0;
     }
-
-    body {
-      font-family: Arial, sans-serif;
-      background-image: url("assets/amb3.png");
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      min-height: 100vh;
-    }
-
-    .container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      padding: 20px;
-      gap: 20px;
-    }
-
-    /* Painel de Preços */
-    .precos {
-      width: 100%;
-      max-width: 400px;
-      padding: 20px;
-      border: 3px solid #000;
-      border-radius: 20px;
-      background-color: rgba(255, 255, 255, 0.95);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-      z-index: 10;
-    }
-
-    .precos h1 {
-      font-size: 28px;
-      margin-bottom: 20px;
-      text-align: center;
-      font-family: 'Apple Chancery', cursive, sans-serif;
-    }
-
-    .precos label {
-      font-weight: bold;
-      font-size: 18px;
-      display: block;
-      margin-top: 10px;
-    }
-
-    .valor-item {
-      font-weight: bold;
-      font-size: 24px;
-      color: red;
-      margin-bottom: 10px;
-    }
-
-    .valor-total {
-      font-weight: bold;
-      font-size: 32px;
-      color: #000;
-      text-align: center;
-      margin-top: 15px;
-      border-top: 2px solid #ccc;
-      padding-top: 10px;
-    }
-
-    /* Area de Visualização Visual */
-    .visualizador {
-      position: relative;
-      flex: 1;
-      min-width: 300px;
-      height: 600px;
-    }
-
-    #porta {
-      position: absolute;
-      width: 80%;
-      height: 90%;
-      top: 5%;
-      left: 10%;
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: center;
+    .opcoes {
+      margin: 450px 20px 20px 30px;
       z-index: 1;
     }
-
-    #fechadura {
-      position: absolute;
-      top: 45%;
-      right: 25%;
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: center;
-      z-index: 2;
-    }
-
-    #puxador {
-      position: absolute;
-      top: 40%;
-      right: 28%;
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: center;
-      z-index: 3;
-    }
-
-    /* Controles e Seletores */
-    .opcoes {
-      width: 100%;
-      max-width: 400px;
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      z-index: 10;
-    }
-
     select {
-      width: 100%;
-      padding: 12px;
+      width: 122%;
+      height: 115px; 
+      margin-top: 10px;      
       font-weight: bold;
-      font-size: 16px;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      background-color: #fff;
-      cursor: pointer;
+      font-size: 30px;  
+      text-align: center;      
     }
+    #opPort{
+      border-radius: 10px 10px 0 0;
+    }
+    #opPux{
+      border-radius: 0 0 10px 10px;
+    } 
+    #opAmb{
+      border-radius: 0 0 0 0;
+    } 
+    #opFec{
+      border-radius: 0 0 0 0;
+    }   
+    .container {
+      margin: 10px 10px 10px 10px;
+      width: auto;
+      
+    }
+    body{
+      background-size: 120% 79%;
+      background-repeat: no-repeat;
+      background-image: url("assets/amb3.png");
+    }
+    #porta{
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+      position: absolute;
+      z-index: 1;
+      width: 100%;
+      height: 60%;
+      margin: -655px 0 0 200px;
+    }  
+  
+    #fechadura{
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+      position: absolute;
+      z-index: 1;
+      width: 7%;
+      height: 8%;
+      margin: -150px 0 0 550px;
+    }    
+  
+    #puxador{
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+      position: absolute;
+      z-index: 2;
+      width: 8%;
+      height: 8%;
 
-    @media (max-width: 768px) {
-      .container {
-        flex-direction: column;
-        align-items: center;
+    }    
+  
+    .precos {
+      width: 40%;
+      height: 1000px;
+      border: solid 3px black;
+      margin: 200px 20px 20px 20px;
+      border-radius: 40px;
+      animation: move 2s  infinite alternate;      
+      font-family: Arial;
+      font-size: 40px;
+      z-index: 15;
+      background-color: white;
+      
+    } 
+    #preco1 {
+      font-weight: bold;
+      font-size: 80px;
+      text-align: center;
+    }
+    #preco2 {
+      font-weight: bold;
+      font-size: 80px;
+      text-align: center;      
+    }
+    #preco3 {
+      font-weight: bold;
+      font-size: 80px;
+      text-align: center;      
+    }
+    #total {
+      font-weight: bold;
+      font-size: 90px;
+      text-align: center; 
+      
+    }        
+    
+    h1 {
+      font-size: 40px;
+      margin-bottom: 100px;
+      text-align: center; 
+      font-family: 'Apple Chancery', cursive;    
+    }
+    label {
+      font-weight: bold;
+      font-size: 50px;
+      text-align: justify;
+      margin-left: 5%; 
+      font-family: 'Apple Chancery', cursive;      
+    }     
+    @keyframes move {
+      from {
+              box-shadow: 1px 1px 1px 1px gray;
+        }
+      to {
+              box-shadow: 5px 5px 5px 5px gray;
       }
-      .precos, .opcoes {
-        max-width: 100%;
+    }
+    @media screen and (min-width: 1024px) and (max-width: 1366px) and (orientation: landscape) {
+      body {
+        background-size: 100% 65%;
+        background-repeat: no-repeat;
+        background-image: url(assets/amb3.png)
       }
+      .precos {
+        width: 30%;
+        height: 600px;
+        border: solid 3px black;
+        margin: 50px 20px 20px 20px;
+        border-radius: 40px;
+        animation: move 2s infinite alternate;
+        font-family: Arial;
+        font-size: 10px;
+        z-index: 15;
+        background-color: white;
+      }
+      #porta {
+        background-size: 80% 75%;
+        background-repeat: no-repeat;
+        position: absolute;
+        z-index: 1;
+        width: 70%;
+        height: 100%;
+      }
+      h1 {
+        font-size: 40px;
+        margin-bottom: 20px;
+        text-align: center;
+        font-family: 'Apple Chancery', cursive;
+      }
+      label {
+        font-weight: bold;
+        font-size: 30px;
+        text-align: justify;
+        margin-left: 5%;
+        font-family: 'Apple Chancery', cursive;
+      }
+      #preco1 {
+        font-weight: bold;
+        font-size: 50px;
+        text-align: center;
+      }
+      #preco2 {
+        font-weight: bold;
+        font-size: 50px;
+        text-align: center;
+      }
+      #preco3 {
+        font-weight: bold;
+        font-size: 50px;
+        text-align: center;
+      }  
+      #total {
+        font-weight: bold;
+        font-size: 60px;
+        text-align: center;
+      }   
+      #opPort {
+        border-radius: 10px 10px 0 0;
+      }
+      select {
+        width: 102%;
+        height: 115px;
+        margin-top: 10px;
+        font-weight: bold;
+        font-size: 30px;
+        text-align: center;
+      }
+      #fechadura{
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        position: absolute;
+        z-index: 1;
+        width: 7%;
+        height: 8%;
+        margin: -300px 0 0 660px;
+      } 
+    #puxador{
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+      position: absolute;
+      z-index: 2;
+      width: 8%;
+      height: 8%;
+    }       
     }
   </style>
+  <title>MODELAR</title>
 </head>
-<body>
-
-  <div class="container">
-    
-    <!-- Painel Lateral: Preços -->
+<body id="body">
+  <div class="conteiner">
     <div class="precos">
       <h1>Sua Porta dos Sonhos...</h1>
-      
-      <label>Porta:</label>
-      <div id="preco1" class="valor-item">R$ 0,00</div>
-
-      <label>Fechadura:</label>
-      <div id="preco2" class="valor-item">R$ 0,00</div>
-
-      <label>Puxador:</label>
-      <div id="preco3" class="valor-item">R$ 0,00</div>
-
-      <label>...por Apenas:</label> 
-      <div id="total" class="valor-total">R$ 0,00</div>
+      <label>Porta: </label>
+      <div id="preco1">0,00</div><br>
+      <label>Fechadura: </label>
+      <div id="preco2">0,00</div><br>
+      <label>Puxador: </label>
+      <div id="preco3">0,00</div><br>
+      <label>...por Apenas: </label> 
+      <div id="total">0,00</div>
     </div>
-
-    <!-- Área Central: Visualização -->
-    <div class="visualizador">
-      <div id="porta"></div>
-      <div id="fechadura"></div>
-      <div id="puxador"></div>
-    </div>
-
-    <!-- Controles de Seleção -->
+    <div id="porta"></div>
+    <div id="fechadura"></div>
+    <div id="puxador"></div>    
+    <div class="ambiente" id="amb"></div>
+    <div class="porta" id="port"></div>
+    <div class="fechadura" id="fec"></div>
+    <div class="puxador" id="pux"></div>
     <div class="opcoes">
       <select id="opPort">
-        <option value="default">Selecione uma Porta</option>
-        <option value="por1">Kit de porta Lisa Branco 2,10 x 0,80 Artens</option>
-        <option value="por2">Kit de porta Lisa Curupixá 2,10 x 0,80 Artens</option>
-      </select>
-
+          <option name="op" selected value="default"></option>
+          <option name="op" value="por1">kit de porta Lisa Branco 2,10 x 0,80 Artens</option>
+          <option name="op" value="por2">kit de porta Lisa Curupixá 2,10 x 0,80 Artens</option>
+      </select><br>
+    
       <select id="opFec">
-        <option value="default">Selecione uma Fechadura</option>
-        <option value="fec1">Fechadura Eletrônica Digital Elsys ESF-DE4000B Embutir</option>
-        <option value="fec2">Fechadura Eletrônica Digital Elsys ESF-DE4000B</option>
-        <option value="fec3">Fechadura Digital Intelbras Senha e Biometria MFV3000</option>
-        <option value="fec4">Fechadura Digital Intelbras Senha FV101 Preto Sobrepor</option>
-        <option value="fec5">Fechadura Digital Elsys Senha e TAG Tecno Prata Sobrepor</option>
-      </select>
-
+          <option selected value="default"></option>
+          <option name="fec" value="fec1">Fechadura Eletrônica Digital Elsys  ESF-DE4000B Embutir</option>
+          <option name="fec" value="fec2">Fechadura Eletrônica Digital Elsys  ESF-DE4000B</option>
+          <option name="fec" value="fec3">Fechadura Digital Intelbras Senha e Biometria MFV3000</option>
+          <option name="fec" value="fec4">Fechadura Digital Intelbras Senha FV101 Preto Sobrepor</option>
+          <option name="fec" value="fec5">Fechadura Digital Elsys Senha e TAG Tecno Prata Sobrepor</option>
+      </select><br>   
+    
       <select id="opPux">
-        <option value="default">Selecione um Puxador</option>
-        <option value="pux1">Puxador Aço Inox Prata Escovado Tubular Reto 40cm</option>
-        <option value="pux2">Puxador Alumínio Preto Barra Reta 40cm Geris Eco</option>
-        <option value="pux3">Puxador Aço Inox Prata Escovado Tubular Reto 40cm</option>
-        <option value="pux4">Puxador Aço Inox Prata Polido Tubular Reto 40cm</option>
-        <option value="pux5">Puxador Alumínio Preto Barra Reta 75cm Geris Eco</option>
-      </select>
+          <option selected value="default"></option>
+          <option name="pux" value="pux1">Puxador Aço Inox Prata Escovado Tubular Reto 40cm</option>
+          <option name="pux"  value="pux2">Puxador Alumínio Preto Barra Reta 40cm Geris Eco</option>
+          <option name="pux"  value="pux3">Puxador Aço Inox Prata Escovado Tubular Reto 40cm</option>
+          <option name="pux" value="pux4">Puxador Aço Inox Prata Polido Tubular Reto 40cm</option>
+          <option name="pux"  value="pux5">Puxador Alumínio Preto Barra Reta 75cm Geris Eco</option>      
+      </select>      
     </div>
-
   </div>
-
-  <script>
-    // Mapeamento centralizado de produtos, imagens e preços
-    const produtos = {
-      portas: {
-        por1: { preco: 1498.90, img: 'assets/portabranca.png' },
-        por2: { preco: 1626.49, img: 'assets/portacurupixa.png' }
-      },
-      fechaduras: {
-        fec1: { preco: 920.11, img: 'assets/ESF-DE4000B.png', width: '8%', height: '8%' },
-        fec2: { preco: 920.11, img: 'assets/fechadura_biometria_esf_de4000b.png', width: '8%', height: '8%' },
-        fec3: { preco: 1319.19, img: 'assets/MFV300.webp', width: '8%', height: '8%' },
-        fec4: { preco: 549.90, img: 'assets/FV101.png', width: '5%', height: '4%' },
-        fec5: { preco: 699.90, img: 'assets/fechadura_senha_e_tag_tecno_prata.png', width: '5%', height: '4%' }
-      },
-      puxadores: {
-        pux1: { preco: 134.90, img: 'assets/puxador_30cm_aco_escovado.png', width: '2%', height: '10%' },
-        pux2: { preco: 99.90, img: 'assets/puxador_40cm_aluminio_preto.png', width: '4%', height: '10%' },
-        pux3: { preco: 190.90, img: 'assets/puxador_40cm_inox_escovado.png', width: '4%', height: '10%' },
-        pux4: { preco: 238.90, img: 'assets/puxador_40cm_inox_polido.png', width: '2%', height: '10%' },
-        pux5: { preco: 358.99, img: 'assets/puxador_75cm_aluminio_preto.png', width: '6%', height: '15%' }
-      }
-    };
-
-    // Elementos DOM
-    const selectPorta = document.getElementById('opPort');
-    const selectFechadura = document.getElementById('opFec');
-    const selectPuxador = document.getElementById('opPux');
-
-    const elPorta = document.getElementById('porta');
-    const elFechadura = document.getElementById('fechadura');
-    const elPuxador = document.getElementById('puxador');
-
-    const elPreco1 = document.getElementById('preco1');
-    const elPreco2 = document.getElementById('preco2');
-    const elPreco3 = document.getElementById('preco3');
-    const elTotal = document.getElementById('total');
-
-    // Função auxiliar para formatação em BRL (R$)
-    const formatarMoeda = (valor) => {
-      return valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-    };
-
-    // Atualizador de estado e interface
-    function atualizarConfiguracao() {
-      const portaSel = produtos.portas[selectPorta.value];
-      const fechaduraSel = produtos.fechaduras[selectFechadura.value];
-      const puxadorSel = produtos.puxadores[selectPuxador.value];
-
-      let vPorta = 0, vFechadura = 0, vPuxador = 0;
-
-      // 1. Atualiza Porta
-      if (portaSel) {
-        vPorta = portaSel.preco;
-        elPorta.style.backgroundImage = `url("${portaSel.img}")`;
-        elPreco1.innerText = formatarMoeda(vPorta);
-      } else {
-        elPorta.style.backgroundImage = '';
-        elPreco1.innerText = formatarMoeda(0);
-      }
-
-      // 2. Atualiza Fechadura
-      if (fechaduraSel) {
-        vFechadura = fechaduraSel.preco;
-        elFechadura.style.backgroundImage = `url("${fechaduraSel.img}")`;
-        elFechadura.style.width = fechaduraSel.width;
-        elFechadura.style.height = fechaduraSel.height;
-        elPreco2.innerText = formatarMoeda(vFechadura);
-      } else {
-        elFechadura.style.backgroundImage = '';
-        elPreco2.innerText = formatarMoeda(0);
-      }
-
-      // 3. Atualiza Puxador (Apenas se as fechaduras específicas sobrepor/compatíveis estiverem selecionadas, mantendo a regra de negócio original)
-      const fechaduraPermitePuxador = ['fec4', 'fec5'].includes(selectFechadura.value);
-
-      if (puxadorSel && fechaduraPermitePuxador) {
-        vPuxador = puxadorSel.preco;
-        elPuxador.style.backgroundImage = `url("${puxadorSel.img}")`;
-        elPuxador.style.width = puxadorSel.width;
-        elPuxador.style.height = puxadorSel.height;
-        elPreco3.innerText = formatarMoeda(vPuxador);
-      } else {
-        elPuxador.style.backgroundImage = '';
-        elPreco3.innerText = formatarMoeda(0);
-        vPuxador = 0;
-      }
-
-      // 4. Calcula e Exibe Total
-      const valorTotal = vPorta + vFechadura + vPuxador;
-      elTotal.innerText = formatarMoeda(valorTotal);
-    }
-
-    // Escutadores de evento nos selects
-    selectPorta.addEventListener('change', atualizarConfiguracao);
-    selectFechadura.addEventListener('change', atualizarConfiguracao);
-    selectPuxador.addEventListener('change', atualizarConfiguracao);
-  </script>
 </body>
-</html>
+<script>
+      const dados = {
+        kitPorta1: 1498.90,
+        kitPorta2: 1626.49,
+        fechadura1: 920.11,
+        fechadura2: 920.11,
+        fechadura3: 1319.19,
+        fechadura4: 549.90,
+        fechadura5: 699.90,
+        puxador1: 134.90,
+        puxador2: 99.90,
+        puxador3: 190.90,
+        puxador4: 238.90,
+        puxador5: 358.99        
+      }
+      let valorP = 0;
+      let valorF = 0;
+      let valorPu = 0;
+      
 
+      const body = document.getElementById("body");
+
+      
+      const select2 = document.getElementById('opPort');
+      const select3 = document.getElementById('opFec');
+      const select4 = document.getElementById('opPux');
+      const port = document.getElementById('porta');
+      const fech = document.getElementById('fechadura');
+      const puxa = document.getElementById('puxador');
+      const preco1 = document.getElementById('preco1');
+      const preco2 = document.getElementById('preco2');
+      const preco3 = document.getElementById('preco3');
+      const total = document.getElementById('total');
+      
+      setInterval(() => {
+        let valorTotal = valorP + valorF + valorPu;
+        let formatado = valorTotal.toFixed(2);
+        if (select2.value == "por1") {
+          valorP = parseFloat(dados.kitPorta1);
+          total.innerText = parseFloat(formatado);
+        }
+        if (select2.value == "por2") {
+          valorP = parseFloat(dados.kitPorta2);
+          total.innerText = parseFloat(formatado);
+        }
+        if (select3.value == "fec1") {
+          valorF = parseFloat(dados.fechadura1);
+          total.innerText = parseFloat(formatado);
+        }
+        if (select3.value == "fec2") {
+          valorF = parseFloat(dados.fechadura2);
+          total.innerText = parseFloat(formatado);
+        }
+        if (select3.value == "fec3") {
+          valorF = parseFloat(dados.fechadura3);
+          total.innerText = parseFloat(formatado);
+        }
+        if (select3.value == "fec4") {
+          valorF = parseFloat(dados.fechadura4);
+          total.innerText = parseFloat(formatado);
+        }
+        if (select3.value == "fec5") {
+          valorF = parseFloat(dados.fechadura5);
+          total.innerText = parseFloat(formatado);
+        }else{
+          '';
+        }
+        if (select4.value == "pux1" && select3.value == "fec4" || select4.value == "pux1" && select3.value == "fec5") {
+          valorPu = parseFloat(dados.puxador1);
+          total.innerText = parseFloat(formatado);
+        }
+        if (select4.value == "pux2" && select3.value == "fec4" || select4.value == "pux1" && select3.value == "fec5") {
+          valorPu = parseFloat(dados.puxador2);
+          total.innerText = parseFloat(formatado);
+        }
+        if (select4.value == "pux3" && select3.value == "fec4" || select4.value == "pux1" && select3.value == "fec5") {
+          valorPu = parseFloat(dados.puxador3);
+          total.innerText = parseFloat(formatado);
+        }
+        if (select4.value == "pux4" && select3.value == "fec4" || select4.value == "pux1" && select3.value == "fec5") {
+          valorPu = dados.puxador4;
+          total.innerText = formatado;
+        }
+        if (select4.value == "pux5" && select3.value == "fec4" || select4.value == "pux1" && select3.value == "fec5") {
+          valorPu = dados.puxador5;
+          total.innerText = formatado;
+        }else {
+          '';      
+        }          
+      }, 100);
+
+      setInterval(() => {
+        if (select2.value == "por1") {
+          preco1.innerText = valorP;
+          preco1.style.color = "red";
+          port.style.backgroundImage= 'url("assets/portabranca.png")';
+         
+        }
+        else if (select2.value == "por2") {
+          preco1.innerText = dados.kitPorta2;
+          preco1.style.color = "red";          
+          port.style.backgroundImage= 'url("assets/portacurupixa.png")';
+        }else{
+          '';
+        }
+      }, 100);
+
+      setInterval(() => {
+        if (select3.value == "fec1") {
+          fech.style.backgroundImage= 'url("assets/ESF-DE4000B.png")';
+          fech.style.width= '8%';
+          fech.style.height= '8%';   
+          preco2.innerText = dados.fechadura1;
+          preco2.style.color = "red";
+          puxa.style.backgroundImage = ''; 
+          preco3.innerText = '';        
+        }
+        else if (select3.value == "fec2") {
+          fech.style.backgroundImage= 'url("assets/fechadura_biometria_esf_de4000b.png")';
+          fech.style.width= '8%';
+          fech.style.height= '8%'; 
+          preco2.innerText = dados.fechadura2;
+          preco2.style.color = "red";         
+          puxa.style.backgroundImage = ''; 
+          preco3.innerText = '';           
+        }
+        else if (select3.value == "fec3") {
+          fech.style.backgroundImage= 'url("assets/MFV300.webp")';
+          fech.style.width= '8%';
+          fech.style.height= '8%';   
+          preco2.innerText = dados.fechadura3;
+          preco2.style.color = "red";         
+          puxa.style.backgroundImage = ''; 
+          preco3.innerText = '';          
+        }
+        else if (select3.value == "fec4") {
+          fech.style.backgroundImage= 'url("assets/FV101.png")';
+          fech.style.width= '5%';
+          fech.style.height= '4%';
+          preco2.innerText = dados.fechadura4;
+          preco2.style.color = "red";          
+          puxa.style.backgroundImage = ''; 
+        }
+        else if (select3.value == "fec5") {
+          fech.style.backgroundImage= 'url("assets/fechadura_senha_e_tag_tecno_prata.png")';
+          fech.style.width= '5%';
+          fech.style.height= '4%';  
+          preco2.innerText = dados.fechadura5;
+          preco2.style.color = "red";          
+          puxa.style.backgroundImage = '';           
+        }else{
+          '';
+        }
+      }, 100);
+
+      setInterval(() => {
+        if (select4.value == "pux1" && select3.value == "fec4" || select4.value == "pux1" && select3.value == "fec5") {
+          puxa.style.backgroundImage= 'url("assets/puxador_30cm_aco_escovado.png")';
+          puxa.style.width= '1%';
+          puxa.style.height= '10%';  
+          puxa.style.margin= '-200px 0 0 620px';
+          preco3.innerText = dados.puxador1;   
+          preco3.style.color = "red";         
+        }
+        else if (select4.value == "pux2" && select3.value == "fec4" || select4.value == "pux2" && select3.value == "fec5") {
+          puxa.style.backgroundImage= 'url("assets/puxador_40cm_aluminio_preto.png")';
+          puxa.style.width= '4%';
+          puxa.style.height= '10%';   
+          puxa.style.margin= '-200px 0 0 600px';  
+          preco3.innerText = dados.puxador2;  
+          preco3.style.color = "red";
+        }
+        else if (select4.value == "pux3" && select3.value == "fec4" || select4.value == "pux3" && select3.value == "fec5") {
+          puxa.style.backgroundImage= 'url("assets/puxador_40cm_inox_escovado.png")';
+          puxa.style.width= '4%';
+          puxa.style.height= '10%'; 
+          puxa.style.margin= '-200px 0 0 600px';  
+          preco3.innerText = dados.puxador3; 
+          preco3.style.color = "red";
+        }
+        else if (select4.value == "pux4" && select3.value == "fec4" || select4.value == "pux4" && select3.value == "fec5") {
+          puxa.style.backgroundImage= 'url("assets/puxador_40cm_inox_polido.png")';
+          puxa.style.width= '1%';
+          puxa.style.height= '10%';
+          puxa.style.margin= '-200px 0 0 600px';  
+          preco3.innerText = dados.puxador4;
+          preco3.style.color = "red";
+        }
+        else if (select4.value == "pux5" && select3.value == "fec4" || select4.value == "pux5" && select3.value == "fec5") {
+          puxa.style.backgroundImage= 'url("assets/puxador_75cm_aluminio_preto.png")';
+          puxa.style.width= '8%';
+          puxa.style.height= '15%';  
+          puxa.style.margin= '-250px 0 0 580px';  
+          preco3.innerText = dados.puxador5;
+          preco3.style.color = "red";
+        }else{
+          '';
+        }
+      }, 100);
+</script>
+</html>
